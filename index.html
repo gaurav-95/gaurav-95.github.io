@@ -4,77 +4,161 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Asli India Drive</title>
-<meta name="description" content="An endless highway drive across West Bengal for Android: from the Bay of Bengal to Darjeeling, through potholes, cows and trucks.">
+<meta name="description" content="An endless drive across West Bengal for Android: from the Sundarbans through Kolkata to the Darjeeling hills, in the game's own light, weather and traffic.">
+<meta property="og:title" content="Asli India Drive">
+<meta property="og:description" content="Kolkata to the hills. One endless road. On Google Play.">
+<meta property="og:image" content="https://gaurav-95.github.io/media/og.jpg">
+<meta name="theme-color" content="#0b0c0e">
 <link rel="icon" href="icon.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@500;600;700&display=swap">
 <style>
-:root{--ground:#121110;--panel:#1c1a17;--ink:#f2efe4;--muted:#b3ac98;--taxi:#ffcc00;--rule:#2e2b25;color-scheme:dark}
+:root{--ground:#0f1113;--panel:#17191c;--ink:#f2f0e6;--muted:#9aa0a6;--accent:#ffc233;--saffron:#ff8a1f;--rule:rgba(242,240,230,.12);color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--ground);color:var(--ink);font:17px/1.6 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;padding-inline:16px;padding-block:32px 56px}
-main{max-width:880px;margin:0 auto;display:grid;gap:36px}
-header{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-header img{width:96px;height:96px;border-radius:22px;flex:none}
-h1{font:400 clamp(38px,8vw,64px)/1 Anton,Impact,"Arial Narrow",sans-serif;letter-spacing:.02em;margin:0;color:var(--taxi);text-wrap:balance}
-.sub{margin:6px 0 0;color:var(--muted);font-size:18px}
-.hero{width:100%;height:auto;border-radius:10px;display:block;border:1px solid var(--rule)}
-.lede{font-size:clamp(18px,2.4vw,21px);max-width:62ch;margin:0}
-h2{font:400 26px/1.1 Anton,Impact,sans-serif;letter-spacing:.03em;margin:0 0 12px;color:var(--taxi)}
-ul{margin:0;padding-left:22px;max-width:65ch}
-li{margin-bottom:8px}
-.route{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.route li{margin:0;background:var(--panel);border:1px solid var(--rule);border-radius:999px;padding:4px 14px;font-size:15px}
-.soon{color:var(--muted)}
-.status{background:var(--panel);border-left:4px solid var(--taxi);border-radius:6px;padding:14px 18px;margin:0}
-footer{border-top:1px solid var(--rule);padding-top:18px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:8px 24px}
-a{color:var(--taxi);text-underline-offset:3px}
-a:focus-visible{outline:2px solid var(--taxi);outline-offset:2px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:18px/1.6 Mukta,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img,video{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
+@media (min-width:720px){.wrap{padding-inline:40px}}
+
+/* Hero: the game's own footage, muted, looping */
+.hero{position:relative;min-height:min(100svh,920px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,12,14,.96) 0%,rgba(11,12,14,.55) 38%,rgba(11,12,14,.05) 70%),linear-gradient(to right,rgba(11,12,14,.55),rgba(11,12,14,0) 55%)}
+.hero .wrap{width:100%;padding-block:0 clamp(40px,8vh,88px)}
+.bn{display:inline-block;font:700 clamp(15px,1.8vw,19px)/1.3 "Noto Sans Bengali",sans-serif;color:#101112;background:var(--ink);padding:2px 12px;border-radius:5px;box-shadow:inset 0 0 0 2px rgba(16,17,18,.85);margin:0 0 clamp(22px,3vw,34px)}
+h1{font:800 clamp(52px,9vw,112px)/.86 Mukta,sans-serif;padding-top:.06em;letter-spacing:-.01em;text-transform:uppercase;margin:0;color:var(--accent);text-shadow:0 4px 0 rgba(120,60,0,.55),0 10px 30px rgba(0,0,0,.5)}
+h1 span{display:block}
+.tag{font:700 clamp(24px,3.2vw,38px)/1.15 Mukta,sans-serif;margin:18px 0 0;color:var(--ink)}
+.rule{width:96px;height:2px;background:var(--accent);margin:22px 0}
+.lede{max-width:56ch;color:#ddd3bf;margin:0 0 28px;font-size:clamp(16px,1.6vw,18px)}
+.cta{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}
+.cta img{height:62px;width:auto;margin:-9px}
+.ghost{font:700 15px/1 Mukta,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:6px}
+
+section{padding-block:clamp(64px,10vw,120px)}
+.eyebrow{font:700 14px/1 Mukta,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+h2{font:800 clamp(30px,4.2vw,52px)/1.05 Mukta,sans-serif;letter-spacing:-.005em;margin:0 0 18px;text-wrap:balance}
+.intro{max-width:62ch;color:#d6ccb8;margin:0}
+
+/* The road, band by band */
+.road{display:grid;grid-auto-flow:column;grid-auto-columns:min(78%,360px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:34px 16px 10px;margin-inline:-16px;scrollbar-width:thin}
+@media (min-width:720px){.road{margin-inline:-40px;padding-inline:40px}}
+.stop{scroll-snap-align:start;margin:0}
+.stop img{aspect-ratio:4/5;width:100%;object-fit:cover;border-radius:4px;filter:saturate(.95)}
+.stop figcaption{padding-top:12px}
+.stop b{display:block;font:800 24px/1.1 Mukta,sans-serif}
+.stop span{color:var(--muted);font-size:15px}
+.stop .km{font:700 13px/1 Mukta;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;display:block;margin-bottom:6px}
+
+/* Three ways to drive */
+.modes{display:grid;gap:18px;margin-top:34px}
+@media (min-width:860px){.modes{grid-template-columns:repeat(3,1fr)}}
+.mode{background:var(--panel);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.mode img{aspect-ratio:16/10;width:100%;object-fit:cover}
+.mode div{padding:20px 22px 24px}
+.mode h3{font:800 16px/1 Mukta;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px}
+.mode p{margin:0;color:#cfc5b1;font-size:16px}
+
+/* Trailer */
+.film{position:relative;margin-top:30px;border-radius:6px;overflow:hidden;border:1px solid var(--rule);background:#000;aspect-ratio:16/9}
+.film video{width:100%;height:100%}
+
+.facts{display:grid;gap:10px 40px;margin:30px 0 0;padding:0;list-style:none}
+@media (min-width:760px){.facts{grid-template-columns:1fr 1fr}}
+.facts li{padding:14px 0;border-top:1px solid var(--rule);color:#d6ccb8}
+.facts b{color:var(--ink);font-weight:600}
+
+.coming{color:var(--muted);margin-top:26px}
+footer{border-top:1px solid var(--rule);padding-block:28px 48px;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px}
 .email{user-select:all;overflow-wrap:anywhere}
+
+@media (prefers-reduced-motion:reduce){.hero video{display:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<main>
-<header>
-<img src="icon.png" alt="Asli India Drive app icon">
-<div>
-<h1>ASLI INDIA DRIVE</h1>
-<p class="sub">An endless Indian highway drive for Android</p>
-</div>
+
+<header class="hero">
+  <img class="poster" src="media/hero.jpg" alt="" aria-hidden="true">
+  <video autoplay muted loop playsinline preload="metadata" poster="media/hero.jpg" aria-hidden="true">
+    <source src="media/hero.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <p class="bn" lang="bn">আসলি ইন্ডিয়া ড্রাইভ</p>
+    <h1><span>Asli</span><span>India</span><span>Drive</span></h1>
+    <p class="tag">Kolkata to the hills. One endless road.</p>
+    <div class="rule"></div>
+    <p class="lede">Drive the real NH 12, from the mangroves of the Sundarbans through old Kolkata to the Darjeeling hills, in the light of your own clock and whatever weather the day brings. Then keep climbing: past the top, the hills never end.</p>
+    <div class="cta">
+      <a href="https://play.google.com/store/apps/details?id=com.gourab.asliindiadrive"><img src="media/google-play-badge.png" alt="Get it on Google Play" width="646" height="250"></a>
+      <a class="ghost" href="#trailer">Watch the trailer</a>
+    </div>
+  </div>
 </header>
 
-<img class="hero" src="feature.png" alt="A small hatchback on a pothole-torn highway, with the tagline One road. Every pothole." width="1024" height="500">
-
-<p class="lede">Drive NH 12 from the Bay of Bengal to Darjeeling, built from the real road. Read the potholes, dodge the cows and the overloaded trucks, keep an eye on the fuel gauge, and keep climbing: past the top, the hills never end.</p>
-
-<section>
-<h2>The road</h2>
-<ul class="route">
-<li>Sundarbans</li><li>Kolkata</li><li>Rarh plains</li><li>Malda</li><li>Terai</li><li>Darjeeling</li><li>The hills, for ever</li>
-</ul>
+<main>
+<section id="road">
+  <div class="wrap">
+    <p class="eyebrow">The road</p>
+    <h2>Six regions of West Bengal, one drive</h2>
+    <p class="intro">Built from the real highway: the river crossings, the level crossings, the pumps and tolls, the traffic that belongs to each stretch of it.</p>
+    <div class="road">
+      <figure class="stop"><img src="media/road-sundarban.webp" alt="A car on a narrow road through mangrove country at dawn" loading="lazy"><figcaption><span class="km">0 km</span><b>Sundarbans</b><span>Where the road starts: mangroves, ponds and the delta's narrow lanes.</span></figcaption></figure>
+      <figure class="stop"><img src="media/road-kolkata.webp" alt="An old cream hatchback on a Kolkata street with the Howrah Bridge behind" loading="lazy"><figcaption><span class="km">1.4 km</span><b>Kolkata</b><span>The Victoria Memorial at dusk, the Howrah Bridge across the river.</span></figcaption></figure>
+      <figure class="stop"><img src="media/road-rarh.webp" alt="A small car crossing open paddy fields at golden hour, seen from above" loading="lazy"><figcaption><span class="km">2.6 km</span><b>Rarh plains</b><span>Long straights over the paddy, and trains to beat at the crossings.</span></figcaption></figure>
+      <figure class="stop"><img src="media/road-farakka.webp" alt="A car crossing the long Farakka barrage over the river" loading="lazy"><figcaption><span class="km">4.9 km</span><b>Farakka &amp; Malda</b><span>Half a kilometre of barrage, then the worst potholes in the state.</span></figcaption></figure>
+      <figure class="stop"><img src="media/road-terai.webp" alt="An SUV on a forest road in morning light" loading="lazy"><figcaption><span class="km">6.8 km</span><b>Terai</b><span>The smoothest road in the game, through the forest corridor.</span></figcaption></figure>
+      <figure class="stop"><img src="media/road-hills.webp" alt="A car beside the narrow-gauge toy train in the hills" loading="lazy"><figcaption><span class="km">8.6 km</span><b>Darjeeling</b><span>Hairpins, tea gardens and the toy train pacing you up the hill.</span></figcaption></figure>
+      <figure class="stop"><img src="media/road-forever.webp" alt="A car climbing a winding hill road at dawn, seen from high above" loading="lazy"><figcaption><span class="km">11 km +</span><b>The hills, for ever</b><span>Past the top the road keeps going, and it never repeats.</span></figcaption></figure>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2>What you do</h2>
-<ul>
-<li>Pick a line through potholes, ruts and craters. The ones you can see are the ones you hit.</li>
-<li>Share the lane with cows, autos, buses, trucks and bikes.</li>
-<li>Fill up at the pumps, pay your tolls, and stop when the level-crossing gate is down.</li>
-<li>Earn Kamai for every kilometre, with double-fare hours in the evening and on Sundays.</li>
-<li>Buy and upgrade 17 cars, starting from the humble Caruti Puzuki 800.</li>
-</ul>
+<section id="modes" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Three ways to drive</p>
+    <h2>Take the trip, wreck the road, or race it</h2>
+    <div class="modes">
+      <article class="mode"><img src="media/mode-trip.webp" alt="A hatchback in the rain at night on a Kolkata street" loading="lazy"><div><h3>Road Trip</h3><p>Fare by the kilometre. Read the potholes, mind the cows, fill up before the tank runs dry.</p></div></article>
+      <article class="mode"><img src="media/mode-todu.webp" alt="An off-roader smashing through traffic" loading="lazy"><div><h3>Todu Fodu</h3><p>No damage, no rules. Smash everything in the lane and keep the combo alive.</p></div></article>
+      <article class="mode"><img src="media/mode-jump.webp" alt="A red hatchback flying over a passing train at a level crossing" loading="lazy"><div><h3>Jump the train</h3><p>Charge the jump, time the release, clear the coaches. Miss, and the train wins.</p></div></article>
+    </div>
+  </div>
 </section>
 
-<section>
-<h2>Coming next</h2>
-<p class="soon">Tamil Nadu, Kerala, Maharashtra, Rajasthan, Punjab and Kashmir are on the road ahead.</p>
+<section id="trailer" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Trailer</p>
+    <h2>Kolkata to the hills</h2>
+    <div class="film">
+      <video controls preload="none" poster="media/trailer.jpg" playsinline>
+        <source src="media/trailer.mp4" type="video/mp4">
+      </video>
+    </div>
+    <ul class="facts">
+      <li><b>17 cars</b>, from the humble 800 up, each in its official colours, each with its own engine and horn.</li>
+      <li><b>Real sky.</b> The sun and moon are where they are today; every run picks its weather.</li>
+      <li><b>Real traffic.</b> Taxis, autos, buses, lorries and cows, both ways on the road.</li>
+      <li><b>Your controls.</b> Touch, arrows or tilt; drag every button where your thumbs want it.</li>
+      <li><b>English, हिन्दी and বাংলা.</b></li>
+      <li><b>Free to play</b>, with ads between journeys. One purchase removes them for good.</li>
+    </ul>
+    <p class="coming">More states are on the road ahead: Tamil Nadu, Kerala, Maharashtra, Rajasthan, Punjab and Kashmir.</p>
+  </div>
 </section>
-
-<p class="status">Coming soon to Google Play. Free to play, with ads between journeys. A one-time purchase removes them for good.</p>
+</main>
 
 <footer>
-<a href="privacy/">Privacy policy</a>
-<span>Made by Gourab Hazra</span>
-<span>Contact: <span class="email">gaurav.hazra1995@gmail.com</span></span>
+  <div class="wrap">
+    <a href="privacy/">Privacy policy</a>
+    <span>Made by Gourab Hazra</span>
+    <span>Contact: <span class="email">gaurav.hazra1995@gmail.com</span></span>
+    <span>Built with DINOv3</span>
+  </div>
 </footer>
-</main>
 </body>
 </html>
